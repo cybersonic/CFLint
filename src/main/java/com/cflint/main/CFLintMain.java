@@ -106,9 +106,9 @@ public class CFLintMain {
         options.addOption("version", false, "show the version number");
         options.addOption("ui", false, "show UI");
         options.addOption(VERBOSE, false, VERBOSE);
-        options.addOption(STRICT_INCLUDE, false, "Check every include and try to parse it");
+        options.addOption(STRICT_INCLUDE, false, "check every include and try to parse it");
         options.addOption(SHOWPROGRESS, false, "show progress bar");
-        options.addOption("singlethread", false, "show progress bar");
+        options.addOption("singlethread", false, "run in a single thread");
 
         options.addOption("logerror", false, "log parsing errors as bugs");
         options.addOption("e", false, "log parsing errors as bugs");
