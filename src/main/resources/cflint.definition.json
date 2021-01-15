@@ -915,7 +915,7 @@
                 {
                     "code": "NEVER_USE_QUERY_IN_CFM",
                     "messageText": "Don't use <cfquery> in .cfm files. Database should not be coupled with view.",
-                    "severity": "WARN"
+                    "severity": "WARNING"
                 }
             ],
             "parameter": []
