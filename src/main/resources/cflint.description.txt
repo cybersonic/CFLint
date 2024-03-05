@@ -16,6 +16,11 @@ AVOID_USING_ABORT:Avoid use of abort statements.
 AVOID_USING_CFINSERT_TAG:Avoid use of cfinsert tags.
 AVOID_USING_CFMODULE_TAG:Avoid use of cfmodule tags.
 AVOID_USING_CFUPDATE_TAG:Avoid use of cfupdate tags.
+AVOID_USING_CFFORM_TAG:Avoid use of CFFORM tags
+AVOID_USING_CFINPUT_TAG:Avoid use of CFINPUT tags
+AVOID_USING_CFINVOKE_TAG:Avoid use of CFINVOKE tags
+AVOID_USING_CFFILE_TAG:Avoid use of CFFILE tags
+AVOID_USING_CFDIRECTORY_TAG:Avoid use of CFDIRECTORY tags
 AVOID_USING_CFINCLUDE_TAG:Avoid use of cfinclude tags.
 COMPONENT_HINT_MISSING:Component is missing a hint.
 FUNCTION_HINT_MISSING:Function is missing a hint.

@@ -101,6 +101,31 @@ List of built-in rules and rule groups
         * tagName = *cfupdate*
     * AVOID_USING_CFUPDATE_TAG - Avoid use of cfupdate tags.  *WARNING*
         * Avoid using &lt;cfupdate&gt; tags. Use cfquery and cfstoredproc instead.
+* CFInvokeChecker
+    * Parameters
+        * tagName = *cfinvoke*
+    * AVOID_USING_CFINVOKE_TAG - Avoid use of cfinvoke tags.  *WARNING*
+        * Avoid using &lt;cfinvoke&gt; tags. Use factory or new Object instead.
+* CFFormChecker
+    * Parameters
+        * tagName = *cfform*
+    * AVOID_USING_CFFORM_TAG - Avoid use of cfform tags.  *WARNING*
+        * Avoid using &lt;cfform&gt; tags. Use html tags instead.
+* CFInputChecker
+    * Parameters
+        * tagName = *cfinput*
+    * AVOID_USING_CFINPUT_TAG - Avoid use of cfinput tags.  *WARNING*
+        * Avoid using &lt;cfinput&gt; tags. Use html tags instead.
+* CFFileChecker
+    * Parameters
+        * tagName = *cffile*
+    * AVOID_USING_CFINPUT_TAG - Avoid use of cffile tags.  *WARNING*
+        * Avoid using &lt;cffile&gt; tags. Use abstraction functions instead.
+* CFDirectoryChecker
+    * Parameters
+        * tagName = *cfdirectory*
+    * AVOID_USING_CFDIRECTORY_TAG - Avoid use of cfdirectory tags.  *WARNING*
+        * Avoid using &lt;cfdirectory&gt; tags. Use abstraction functions instead.
 * CFIncludeChecker
     * Parameters
         * tagName = *cfinclude*
@@ -357,6 +382,11 @@ List of built-in rules and rule groups
  * AVOID_USING_CFINSERT_TAG   *WARNING*
  * AVOID_USING_CFMODULE_TAG   *WARNING*
  * AVOID_USING_CFUPDATE_TAG   *WARNING*
+ * AVOID_USING_CFFORM_TAG   *WARNING*
+ * AVOID_USING_CFINPUT_TAG   *WARNING*
+ * AVOID_USING_CFINVOKE_TAG   *WARNING*
+ * AVOID_USING_CFFILE_TAG   *WARNING*
+ * AVOID_USING_CFDIRECTORY_TAG   *WARNING*
  * AVOID_USING_WRITEDUMP   *INFO*
  * GLOBAL_LITERAL_VALUE_USED_TOO_OFTEN   *WARNING*
  * GLOBAL_VAR   *WARNING*

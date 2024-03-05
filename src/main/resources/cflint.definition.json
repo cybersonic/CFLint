@@ -244,6 +244,91 @@
             ]
         },
         {
+            "name": "CFInvokeChecker",
+            "className": "CFXTagChecker",
+            "message": [
+                {
+                    "code": "AVOID_USING_CFINVOKE_TAG",
+                    "messageText": "Avoid using <${tagName}> tags. Use factory or new Object instead.",
+                    "severity": "WARNING"
+                }
+            ],
+            "parameter": [
+                {
+                    "name": "tagName",
+                    "value": "cfinvoke"
+                }
+            ]
+        },
+        {
+            "name": "CFFormChecker",
+            "className": "CFXTagChecker",
+            "message": [
+                {
+                    "code": "AVOID_USING_CFFORM_TAG",
+                    "messageText": "Avoid using <${tagName}> tags. Use html tags instead.",
+                    "severity": "WARNING"
+                }
+            ],
+            "parameter": [
+                {
+                    "name": "tagName",
+                    "value": "cfform"
+                }
+            ]
+        },
+        {
+            "name": "CFInputChecker",
+            "className": "CFXTagChecker",
+            "message": [
+                {
+                    "code": "AVOID_USING_CFINPUT_TAG",
+                    "messageText": "Avoid using <${tagName}> tags. Use html tags instead.",
+                    "severity": "WARNING"
+                }
+            ],
+            "parameter": [
+                {
+                    "name": "tagName",
+                    "value": "cfinput"
+                }
+            ]
+        },
+        {
+            "name": "CFFileChecker",
+            "className": "CFXTagChecker",
+            "message": [
+                {
+                    "code": "AVOID_USING_CFFILE_TAG",
+                    "messageText": "Avoid using <${tagName}> tags. Use abstraction functions instead.",
+                    "severity": "WARNING"
+                }
+            ],
+            "parameter": [
+                {
+                    "name": "tagName",
+                    "value": "cffile"
+                }
+            ]
+        },
+        {
+            "name": "CFDirectoryChecker",
+            "className": "CFXTagChecker",
+            "message": [
+                {
+                    "code": "AVOID_USING_CFDIRECTORY_TAG",
+                    "messageText": "Avoid using <${tagName}> tags. Use abstraction functions instead.",
+                    "severity": "WARNING"
+                }
+            ],
+            "parameter": [
+                {
+                    "name": "tagName",
+                    "value": "cfdirectory"
+                }
+            ]
+        },
+        {
             "name": "CFIncludeChecker",
             "className": "CFXTagChecker",
             "message": [
@@ -1081,6 +1166,9 @@
                 "AVOID_USING_CFINSERT_TAG",
                 "AVOID_USING_CFMODULE_TAG",
                 "AVOID_USING_CFUPDATE_TAG",
+                "AVOID_USING_CFINVOKE_TAG",
+                "AVOID_USING_CFFORM_TAG",
+                "AVOID_USING_CFINPUT_TAG",
                 "AVOID_USING_WRITEDUMP",
                 "GLOBAL_LITERAL_VALUE_USED_TOO_OFTEN",
                 "GLOBAL_VAR",
@@ -1096,7 +1184,9 @@
             "name": "Security",
             "message": [
                 "CFQUERYPARAM_REQ",
-                "QUERYPARAM_REQ"
+                "QUERYPARAM_REQ",
+                "AVOID_USING_CFFILE_TAG",
+                "AVOID_USING_CFDIRECTORY_TAG"
             ]
         },
         {
