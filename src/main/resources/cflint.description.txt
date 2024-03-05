@@ -5,6 +5,7 @@ NO_DEFAULT_INSIDE_SWITCH:Missing default switch statement.
 GLOBAL_VAR:Global variable exists.
 NESTED_CFOUTPUT:Nexted cfoutput with cfquery tag.
 OUTPUT_ATTR:Tag should have output='false'.
+ADDTOKEN_ATTR:Tag should have addtoken='false'.
 QUERYPARAM_REQ:Use query parameters for variables in sql statements.
 CFQUERYPARAM_REQ:cfquery should use <cfqueryparam>.
 QUERYNEW_DATATYPE:QueryNew statement should specify datatypes.
@@ -21,6 +22,8 @@ AVOID_USING_CFINPUT_TAG:Avoid use of CFINPUT tags
 AVOID_USING_CFINVOKE_TAG:Avoid use of CFINVOKE tags
 AVOID_USING_CFFILE_TAG:Avoid use of CFFILE tags
 AVOID_USING_CFDIRECTORY_TAG:Avoid use of CFDIRECTORY tags
+AVOID_USING_CFCOOKIE_TAG:Avoid use of CFCOOKIE tags
+AVOID_USING_CFHTTP_TAG:Avoid use of CFHTTP tags
 AVOID_USING_CFINCLUDE_TAG:Avoid use of cfinclude tags.
 COMPONENT_HINT_MISSING:Component is missing a hint.
 FUNCTION_HINT_MISSING:Function is missing a hint.

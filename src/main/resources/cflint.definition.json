@@ -72,6 +72,17 @@
             "parameter": []
         },
         {
+            "name": "AddTokenMissing",
+            "message": [
+                {
+                    "code": "ADDTOKEN_ATTR",
+                    "messageText": "<${tag} url=\"${variable}\"> should have @addtoken='false'",
+                    "severity": "INFO"
+                }
+            ],
+            "parameter": []
+        },
+        {
             "name": "QueryParamChecker",
             "message": [
                 {
@@ -325,6 +336,40 @@
                 {
                     "name": "tagName",
                     "value": "cfdirectory"
+                }
+            ]
+        },
+        {
+            "name": "CFCookieChecker",
+            "className": "CFXTagChecker",
+            "message": [
+                {
+                    "code": "AVOID_USING_CFCOOKIE_TAG",
+                    "messageText": "Avoid using <${tagName}> tags. Use abstraction functions instead.",
+                    "severity": "WARNING"
+                }
+            ],
+            "parameter": [
+                {
+                    "name": "tagName",
+                    "value": "cfcookie"
+                }
+            ]
+        },
+        {
+            "name": "CFHttpChecker",
+            "className": "CFXTagChecker",
+            "message": [
+                {
+                    "code": "AVOID_USING_CFHTTP_TAG",
+                    "messageText": "Avoid using <${tagName}> tags. Use abstraction functions instead.",
+                    "severity": "WARNING"
+                }
+            ],
+            "parameter": [
+                {
+                    "name": "tagName",
+                    "value": "cfhttp"
                 }
             ]
         },
@@ -1185,8 +1230,11 @@
             "message": [
                 "CFQUERYPARAM_REQ",
                 "QUERYPARAM_REQ",
+                "ADDTOKEN_ATTR",
                 "AVOID_USING_CFFILE_TAG",
-                "AVOID_USING_CFDIRECTORY_TAG"
+                "AVOID_USING_CFDIRECTORY_TAG",
+                "AVOID_USING_CFCOOKIE_TAG",
+                "AVOID_USING_CFHTTP_TAG"
             ]
         },
         {

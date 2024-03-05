@@ -54,6 +54,9 @@ List of built-in rules and rule groups
 * OutputParmMissing
     * OUTPUT_ATTR - Tag should have output='false'.  *INFO*
         * &lt;*tag* name="*variable*"&gt; should have @output='false'
+* AddTokenMissing
+    * ADDTOKEN_ATTR - Tag should have addtoken='false'.  *INFO*
+        * &lt;*tag* should have @addtoken='false'
 * QueryParamChecker
     * QUERYPARAM_REQ - SetSql() statement should use .addParam().  *WARNING*
         * setSql() statement should use .addParam() instead of #'s name="*variable*"
@@ -126,6 +129,16 @@ List of built-in rules and rule groups
         * tagName = *cfdirectory*
     * AVOID_USING_CFDIRECTORY_TAG - Avoid use of cfdirectory tags.  *WARNING*
         * Avoid using &lt;cfdirectory&gt; tags. Use abstraction functions instead.
+* CFCookie
+    * Parameters
+        * tagName = *cfcookie*
+    * AVOID_USING_CFCOOKIE_TAG - Avoid use of cfcookie tags.  *WARNING*
+        * Avoid using &lt;cfcookie&gt; tags. Use abstraction functions instead.
+* CFHttp
+    * Parameters
+        * tagName = *cfhttp*
+    * AVOID_USING_CFHTTP_TAG - Avoid use of cfhttp tags.  *WARNING*
+        * Avoid using &lt;cfhttp&gt; tags. Use abstraction functions instead.
 * CFIncludeChecker
     * Parameters
         * tagName = *cfinclude*
@@ -360,6 +373,7 @@ List of built-in rules and rule groups
  * NO_DEFAULT_INSIDE_SWITCH   *WARNING*
  * NESTED_CFOUTPUT   *ERROR*
  * OUTPUT_ATTR   *INFO*
+ * ADDTOKEN_ATTR   *INFO*
  * MISSING_VAR   *ERROR*
  * COMPARE_INSTEAD_OF_ASSIGN   *WARNING*
  * AVOID_USING_ISDATE   *WARNING*
@@ -387,6 +401,8 @@ List of built-in rules and rule groups
  * AVOID_USING_CFINVOKE_TAG   *WARNING*
  * AVOID_USING_CFFILE_TAG   *WARNING*
  * AVOID_USING_CFDIRECTORY_TAG   *WARNING*
+ * AVOID_USING_CFCOOKIE_TAG   *WARNING*
+ * AVOID_USING_CFHTTP_TAG   *WARNING*
  * AVOID_USING_WRITEDUMP   *INFO*
  * GLOBAL_LITERAL_VALUE_USED_TOO_OFTEN   *WARNING*
  * GLOBAL_VAR   *WARNING*

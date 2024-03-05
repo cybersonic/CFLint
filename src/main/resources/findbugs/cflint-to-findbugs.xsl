@@ -125,6 +125,9 @@
 								<xsl:when test="@message='OUTPUT_ATTR'">
 									<xsl:text>Functions should specify @output="false"</xsl:text>
 								</xsl:when>
+								<xsl:when test="@message='ADDTOKEN_ATTR'">
+									<xsl:text>CFLocation should specify @addtoken="false"</xsl:text>
+								</xsl:when>
 							</xsl:choose>
 						</Details>
 					</BugPattern>

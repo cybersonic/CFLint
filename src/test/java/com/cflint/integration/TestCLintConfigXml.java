@@ -23,7 +23,7 @@ public class TestCLintConfigXml {
     @Before
     public void setUp() throws Exception {
         final com.cflint.config.CFLintConfiguration conf = createDefaultLimited("CFInsertChecker",
-                "CFUpdateChecker", "CFModuleChecker", "CFInvokeChecker", "CFFormChecker", "CFInputChecker", "CFFileChecker", "CFDirectoryChecker");
+                "CFUpdateChecker", "CFModuleChecker", "CFInvokeChecker", "CFFormChecker", "CFInputChecker", "CFFileChecker", "CFDirectoryChecker", "CFCookieChecker", "CFHttpChecker");
         cflint = new CFLint(conf);
     }
 
@@ -146,6 +146,36 @@ public class TestCLintConfigXml {
         assertEquals(1, result.size());
         assertEquals("AVOID_USING_CFDIRECTORY_TAG", result.get(0).getMessageCode());
         assertEquals("Avoid using <cfdirectory> tags. Use abstraction functions instead.", result.get(0).getMessage());
+        assertEquals(Levels.WARNING, result.get(0).getSeverity());
+    }
+
+    @Test
+    /**
+     * Confirm rule is overridden.
+     */
+    public void test_CFCOOKIE() throws CFLintScanException {
+        final String cfcSrc = "<cfcomponent hint=\"hint\">\r\n" + "<cfcookie>\r\n" + "</cfcomponent>";
+        cflint.process(cfcSrc, "Test.cfc");
+        List<BugInfo> result = cflint.getBugs().getFlatBugList();
+
+        assertEquals(1, result.size());
+        assertEquals("AVOID_USING_CFCOOKIE_TAG", result.get(0).getMessageCode());
+        assertEquals("Avoid using <cfcookie> tags. Use abstraction functions instead.", result.get(0).getMessage());
+        assertEquals(Levels.WARNING, result.get(0).getSeverity());
+    }
+
+    @Test
+    /**
+     * Confirm rule is overridden.
+     */
+    public void test_CFHTTP() throws CFLintScanException {
+        final String cfcSrc = "<cfcomponent hint=\"hint\">\r\n" + "<cfhttp>\r\n" + "</cfcomponent>";
+        cflint.process(cfcSrc, "Test.cfc");
+        List<BugInfo> result = cflint.getBugs().getFlatBugList();
+
+        assertEquals(1, result.size());
+        assertEquals("AVOID_USING_CFHTTP_TAG", result.get(0).getMessageCode());
+        assertEquals("Avoid using <cfhttp> tags. Use abstraction functions instead.", result.get(0).getMessage());
         assertEquals(Levels.WARNING, result.get(0).getSeverity());
     }
 
