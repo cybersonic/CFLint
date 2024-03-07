@@ -36,7 +36,7 @@ public class ImplicitScopeChecker extends CFLintScannerAdapter {
     protected Map<String, VariableInfo> implicitIdentifierVariables = new LinkedHashMap<>();
     protected Boolean isCFM = false;
 
-    private final Collection<String> scopes = Arrays.asList(CF.APPLICATION, CF.REQUEST, CF.SERVER, CF.SESSION, CF.CFTHREAD);
+    private final Collection<String> scopes = Arrays.asList(CF.APPLICATION, CF.REQUEST, CF.SERVER, CF.SESSION, CF.CFTHREAD, CF.FORM, CF.URL, CF.CGI, CF.COOKIE, CF.CLIENT, CF.FILE);
     private final Collection<String> implicitscopes = Arrays.asList(CF.FORM, CF.URL, CF.CGI, CF.COOKIE, CF.CLIENT, CF.FILE);
     private final Collection<String> variablescopes = Arrays.asList(CF.VARIABLES);
 
