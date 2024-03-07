@@ -71,17 +71,17 @@ public class ImplicitScopeChecker extends CFLintScannerAdapter {
 							: null;
             
             final String name1 = ((CFIdentifier) cfIdentifier1).getName();
-            if ( isImplicitScope(name1) ) {
+            if ( isImplicitScope(name1) && cfIdentifier2 != null ) {
                 final String name = ((CFIdentifier) cfIdentifier2).getName();
                 if ( name != null ) {
                     implicitScopedVariables.add(name.toLowerCase());
                 }
-            } else if ( isVariableScope(name1) ) {
+            } else if ( isVariableScope(name1) && cfIdentifier2 != null  ) {
                 final String name = ((CFIdentifier) cfIdentifier2).getName();
                 if ( name != null ) {
                     variableScopedVariables.add(name.toLowerCase());
                 }
-            } else if ( isScope(name1) ) {
+            } else if ( isScope(name1) && cfIdentifier2 != null  ) {
                 final String name = ((CFIdentifier) cfIdentifier2).getName();
                 if ( name != null ) {
                     scopedVariables.add(name.toLowerCase());
