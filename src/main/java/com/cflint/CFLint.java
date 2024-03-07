@@ -341,6 +341,7 @@ public class CFLint implements IErrorReporter {
                     processStack(elements, " ", filename, null);
                 }
             }
+            beforeEndFile(filename, new Context(filename, null, null, false, handler,configuration));
             fireFinishedProcessing(filename);
         }catch(final Exception e){
             throw new CFLintScanException(e);
@@ -1014,6 +1015,22 @@ public class CFLint implements IErrorReporter {
             } catch (final Exception e) {
                 printException(e);
                 reportRule(elem, expression, context, plugin, PLUGIN_ERROR);
+            }
+        }
+    }
+
+    protected void beforeEndFile(final String srcidentifier, final Context context) {
+        for (final CFLintStructureListener structurePlugin : getStructureListeners(extensions)) {
+            try {
+                structurePlugin.beforeEndFile(srcidentifier, context, bugs);
+                for (final ContextMessage message : context.getMessages()) {
+                    reportRule(message.getOriginalContext().getElement(), null, message.getOriginalContext(), (CFLintScanner) structurePlugin, message);
+                }
+                context.getMessages().clear();
+            } catch (final Exception e) {
+                printException(e);
+                final ContextMessage cm = new ContextMessage(PARSE_ERROR, null, null, context.startLine());
+                reportRule(currentElement, null, context, null, cm);
             }
         }
     }

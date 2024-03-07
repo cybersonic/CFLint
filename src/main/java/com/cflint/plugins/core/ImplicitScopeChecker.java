@@ -34,6 +34,7 @@ public class ImplicitScopeChecker extends CFLintScannerAdapter {
     
     protected Map<String, VariableInfo> unscopedAssignedVariables = new LinkedHashMap<>();
     protected Map<String, VariableInfo> implicitIdentifierVariables = new LinkedHashMap<>();
+    protected Boolean isCFM = false;
 
     private final Collection<String> scopes = Arrays.asList(CF.APPLICATION, CF.CGI, CF.COOKIE, CF.FORM, CF.REQUEST,
         CF.SERVER, CF.SESSION, CF.URL, CF.CFTHREAD);
@@ -103,23 +104,53 @@ public class ImplicitScopeChecker extends CFLintScannerAdapter {
         // implicitIdentifierVariables.put(name.toLowerCase(), new VariableInfo(name, expression, context));
 	}
 
+    @Override
+	public void startFile(String filename, BugList bugs) {
+        final String ext = filename.substring(filename.length() - 3, filename.length());
+        isCFM = "cfm".equals(ext);
+        clearVariables(false);
+	}
+
+    @Override
+	public void beforeEndFile(String filename, Context context, BugList bugs) {
+        checkImplicitScopes(false, context);
+	}
+
 	@Override
 	public void startFunction(Context context, BugList bugs) {
-        implicitScopedVariables.clear();
-        implicitIdentifierVariables.clear();
-        unscopedAssignedVariables.clear();
-        scopedVariables.clear();
+        clearVariables(true);
 	}
 
     @Override
     public void endFunction(final Context context, final BugList bugs) {
+        checkImplicitScopes(true, context);
+    }
+    
+    @Override
+    public void element(final Element element, final Context context, final BugList bugs) {
+    }
+
+    private void clearVariables(final Boolean isFunction) {
+        if ( (isFunction && isCFM) || (!isFunction && !isCFM) ) {
+            return;
+        }
+        implicitScopedVariables.clear();
+        implicitIdentifierVariables.clear();
+        unscopedAssignedVariables.clear();
+        scopedVariables.clear();
+    }
+    
+    private void checkImplicitScopes(final Boolean isFunction, final Context context) {
+        if ( (isFunction && isCFM) || (!isFunction && !isCFM) ) {
+            return;
+        }
         // sort by line number
         for (final VariableInfo variable : implicitIdentifierVariables.values()) {
             // Doesn't exist as unscoped or VARIABLES, or is known as an implicit scope
             if ( ( unscopedAssignedVariables.get(variable.name.toLowerCase()) == null
             && variableScopedVariables.contains(variable.name.toLowerCase()) != true )
             || implicitScopedVariables.contains(variable.name.toLowerCase()) == true ) {
-            	context.addMessage(
+                context.addMessage(
                     "IMPLICIT_SCOPE",
                     variable.name,
                     this,
@@ -129,10 +160,6 @@ public class ImplicitScopeChecker extends CFLintScannerAdapter {
                     variable.context);
             }
         }
-    }
-    
-    @Override
-    public void element(final Element element, final Context context, final BugList bugs) {
     }
 
     private boolean isImplicitScope(final String nameVar) {
@@ -153,11 +180,6 @@ public class ImplicitScopeChecker extends CFLintScannerAdapter {
         private String name;
         CFExpression expression;
         final Context context;
-
-        public VariableInfo(final String name) {
-            this.name = name;
-            this.context=null;
-        }
 
         public VariableInfo(final String name, final CFExpression expression,final Context context) {
             super();
