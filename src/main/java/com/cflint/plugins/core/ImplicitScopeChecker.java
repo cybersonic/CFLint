@@ -36,10 +36,8 @@ public class ImplicitScopeChecker extends CFLintScannerAdapter {
     protected Map<String, VariableInfo> implicitIdentifierVariables = new LinkedHashMap<>();
     protected Boolean isCFM = false;
 
-    private final Collection<String> scopes = Arrays.asList(CF.APPLICATION, CF.CGI, CF.COOKIE, CF.FORM, CF.REQUEST,
-        CF.SERVER, CF.SESSION, CF.URL, CF.CFTHREAD);
-
-    private final Collection<String> implicitscopes = Arrays.asList(CF.FORM, CF.URL);
+    private final Collection<String> scopes = Arrays.asList(CF.APPLICATION, CF.REQUEST, CF.SERVER, CF.SESSION, CF.CFTHREAD);
+    private final Collection<String> implicitscopes = Arrays.asList(CF.FORM, CF.URL, CF.CGI, CF.COOKIE, CF.CLIENT, CF.FILE);
     private final Collection<String> variablescopes = Arrays.asList(CF.VARIABLES);
 
 	@Override
@@ -48,10 +46,17 @@ public class ImplicitScopeChecker extends CFLintScannerAdapter {
             checkFullExpression((CFFullVarExpression) expression, context, bugs);
         } else if (expression instanceof CFVarDeclExpression) {
             checkExpression((CFVarDeclExpression)expression, context);
-        } else if (expression instanceof CFIdentifier && !context.isInAssignmentExpression()) {
+        } else if (expression instanceof CFIdentifier) {
             final String name = ((CFIdentifier) expression).getName();
             if ( name != null && !isScope(name) && ( !context.isInFunction() || !context.getCallStack().checkVariable(name) ) ) {
-                implicitIdentifierVariables.put(name.toLowerCase(), new VariableInfo(name, expression, context));
+                if (context.isInAssignmentExpression()) {
+                    unscopedAssignedVariables.put(name.toLowerCase(), new VariableInfo(name, expression, context));
+                    if ( context.isInAssignmentExpression() ) {
+                        variableScopedVariables.add(name.toLowerCase());
+                    }
+                } else {
+                    implicitIdentifierVariables.put(name.toLowerCase(), new VariableInfo(name, expression, context));
+                }
             }
         }
 	}
@@ -84,6 +89,9 @@ public class ImplicitScopeChecker extends CFLintScannerAdapter {
             } else if ( expression.getExpressions().size() == 1 ) {
                 if ( name1 != null && ( !context.isInFunction() || !context.getCallStack().checkVariable(name1) ) ) {
                     unscopedAssignedVariables.put(name1.toLowerCase(), new VariableInfo(name1,cfIdentifier1,context));
+                    if ( context.isInAssignmentExpression() ) {
+                        variableScopedVariables.add(name1.toLowerCase());
+                    }
                 }
             }
         }
