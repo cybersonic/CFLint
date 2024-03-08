@@ -31,6 +31,18 @@ public interface CFLintStructureListener {
     void endFile(final String fileName, BugList bugs);
 
     /**
+     * Called when processing of current file has almost ended
+     * 
+     * @param fileName
+     *            Name of the file that finished
+     * @param context
+     *            Current context
+     * @param bugs
+     *            List of errors reported
+     */
+    void beforeEndFile(final String fileName, Context context, BugList bugs);
+
+    /**
      * Called when processing a new component has started
      * 
      * @param context

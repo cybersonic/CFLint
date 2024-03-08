@@ -42,6 +42,9 @@ List of built-in rules and rule groups
         * Variable *variable* should not be declared in both local and argument scopes.
     * ARG_VAR_MIXED - Variable referenced in local and argument scopes.  *INFO*
         * Variable *variable* should not be referenced in local and argument scope.
+* ImplicitScopeChecker
+    * IMPLICIT_SCOPE - Variable referenced maybe implicit scope.  *INFO*
+        * Variable *variable* should define scope.
 * CFSwitchDefaultChecker
     * NO_DEFAULT_INSIDE_SWITCH - Missing default switch statement.  *WARNING*
         * Not having a Default statement defined for a switch could pose potential issues.
@@ -382,6 +385,7 @@ List of built-in rules and rule groups
  * ARG_TYPE_ANY   *WARNING*
  * ARG_TYPE_MISSING   *WARNING*
  * ARG_VAR_MIXED   *INFO*
+ * IMPLICIT_SCOPE   *INFO*
  * QUERYNEW_DATATYPE   *WARNING*
  * UNUSED_LOCAL_VARIABLE   *INFO*
  * UNUSED_METHOD_ARGUMENT   *INFO*

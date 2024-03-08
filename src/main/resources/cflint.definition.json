@@ -28,6 +28,17 @@
             "parameter": []
         },
         {
+            "name": "ImplicitScopeChecker",
+            "message": [
+                {
+                    "code": "IMPLICIT_SCOPE",
+                    "messageText": "Variable ${variable} referenced maybe implicit scope.",
+                    "severity": "INFO"
+                }
+            ],
+            "parameter": []
+        },
+        {
             "name": "CFSwitchDefaultChecker",
             "message": [
                 {
@@ -60,7 +71,7 @@
             ],
             "parameter": []
         },
-        {
+                {
             "name": "OutputParmMissing",
             "message": [
                 {

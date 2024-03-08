@@ -110,7 +110,7 @@
 								<xsl:when test="@message='NESTED_CFOUTPUT'">
 									<xsl:text>Nested &lt;cfquery/&gt; tags, the outer tag has an @query attribute, it should also specify the @group attribute.</xsl:text>
 								</xsl:when>
-								<xsl:when test="@message='QUERYNEW_DATATYPE'">
+																<xsl:when test="@message='QUERYNEW_DATATYPE'">
 									<xsl:text>QueryNew should specify the datatypes of the columns.</xsl:text>
 								</xsl:when>
 								<xsl:when test="@message='ARG_VAR_CONFLICT'">
@@ -118,6 +118,9 @@
 								</xsl:when>
 								<xsl:when test="@message='ARG_VAR_MIXED'">
 									<xsl:text>Variable referenced both as an unscoped (local) and an argument.</xsl:text>
+								</xsl:when>
+								<xsl:when test="@message='IMPLICIT_SCOPE'">
+									<xsl:text>Variable referenced maybe implicit scope.</xsl:text>
 								</xsl:when>
 								<xsl:when test="@message='ARG_DEFAULT_MISSING'">
 									<xsl:text>Arguments that are not required should specify a default value (@default)</xsl:text>

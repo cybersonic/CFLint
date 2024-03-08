@@ -156,6 +156,14 @@ public class CFLintScannerAdapter implements CFLintScanner, CFLintStructureListe
      * Default implementation does nothing
      */
     @Override
+    public void beforeEndFile(final String fileName, final Context context, final BugList bugs) {
+        //empty body for Adapter
+    }
+
+    /**
+     * Default implementation does nothing
+     */
+    @Override
     public void endFile(final String fileName, final BugList bugs) {
         //empty body for Adapter
     }

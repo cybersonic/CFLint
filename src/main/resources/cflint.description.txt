@@ -1,6 +1,7 @@
 ARG_DEFAULT_MISSING:Optional argument is missing a default value.
 ARG_VAR_CONFLICT:Variable declared in both local and argument scopes.
 ARG_VAR_MIXED:Variable referenced in local and argument scopes.
+IMPLICIT_SCOPE:Variable referenced maybe implicit scope.
 NO_DEFAULT_INSIDE_SWITCH:Missing default switch statement.
 GLOBAL_VAR:Global variable exists.
 NESTED_CFOUTPUT:Nexted cfoutput with cfquery tag.
