@@ -1,18 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.github.cflint</groupId>
-	<artifactId>CFLint</artifactId>
+	<groupId>io.github.cfmleditor</groupId>
+	<artifactId>cflint</artifactId>
 	<version>1.5.2</version>
 	<packaging>jar</packaging>
 
-	<name>CFLint</name>
-	<description>
-		A static code analysis tool for ColdFusion (in the spirit of FindBugs and Lint). With CFLint, you are able to analyze your ColdFusion code base for code violations.
-	</description>
-	<url>https://github.com/cflint/CFLint</url>
+	<name>cflint</name>
+	<description>A static code analysis tool for ColdFusion (in the spirit of FindBugs and Lint). With cflint, you are able to analyze your ColdFusion code base for code violations.</description>
+	<url>https://github.com/cfmleditor/cflint</url>
 	<inceptionYear>2013</inceptionYear>
 	<organization>
-		<name>CFLint</name>
+		<name>cflint</name>
 	</organization>
 
 	<developers>
@@ -34,12 +32,18 @@
 			<organization>cfparser</organization>
 			<organizationUrl>https://github.com/denuno</organizationUrl>
 		</developer>
+		<developer>
+			<name>Gareth Edwards</name>
+			<email>ghedwards@gmail.com</email>
+			<organization>cfmleditor</organization>
+			<organizationUrl>https://github.com/cfmleditor</organizationUrl>
+		</developer>
 	</developers>
 
 	<scm>
-		<connection>scm:git:git@github.com:cflint/CFLint.git</connection>
-		<developerConnection>scm:git:git@github.com:cflint/CFLint.git</developerConnection>
-		<url>git@github.com:cflint/CFLint.git</url>
+		<connection>scm:git:git@github.com:cfmleditor/cflint.git</connection>
+		<developerConnection>scm:git:git@github.com:cfmleditor/cflint.git</developerConnection>
+		<url>git@github.com:cfmleditor/cflint.git</url>
 	</scm>
 
 	<repositories>
@@ -56,7 +60,7 @@
     	</repositories>
 
 	<licenses>
-	<license>
+		<license>
             <name>The New BSD License</name>
             <url>https://opensource.org/licenses/bsd-license.html</url>
             <distribution>repo</distribution>
@@ -70,7 +74,7 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 
 		<cfparser.version>2.11.0</cfparser.version>
-		<jackson.version>2.12.7.1</jackson.version>
+		<jackson.version>2.16.1</jackson.version>
 		<slf4j.version>1.7.21</slf4j.version>
 	</properties>
 
@@ -212,9 +216,9 @@
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                         </manifest>
 						<manifestEntries>
-							<Bundle-Name>CFLint</Bundle-Name>
-                            <Bundle-SymbolicName>com.cflint.CFLint</Bundle-SymbolicName>
-                            <Bundle-Description>CFLint</Bundle-Description>
+							<Bundle-Name>cflint</Bundle-Name>
+                            <Bundle-SymbolicName>com.cflint.cflint</Bundle-SymbolicName>
+                            <Bundle-Description>cflint</Bundle-Description>
                             <Bundle-ManifestVersion>2</Bundle-ManifestVersion>
                             <Bundle-Version>${project.version}</Bundle-Version>
 						</manifestEntries>

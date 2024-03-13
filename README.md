@@ -48,7 +48,7 @@ If you want to use CFLint from within another Maven project, use:
 ```xml
 <dependency>
     <groupId>com.github.cflint</groupId>
-    <artifactId>CFLint</artifactId>
+    <artifactId>cflint</artifactId>
     <version>1.4.1</version>
 </dependency>
 ```
@@ -58,7 +58,7 @@ Or always use the latest:
 ```xml
 <dependency>
     <groupId>com.github.cflint</groupId>
-    <artifactId>CFLint</artifactId>
+    <artifactId>cflint</artifactId>
     <version>LATEST</version>
 </dependency>
 ```
