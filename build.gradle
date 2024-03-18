@@ -18,6 +18,7 @@ buildscript {
         classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
         classpath "io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.22.0"
         classpath "gradle.plugin.se.bjurr.gitchangelog:git-changelog-gradle-plugin:1.64"
+        // classpath "net.thebugmc.gradle:sonatype-central-portal-publisher:1.2.3"
     }
 }
 
@@ -25,6 +26,18 @@ plugins {
     id 'java'
     id 'com.github.johnrengelman.shadow' version '7.1.1'
     id 'eclipse'
+    id 'signing'
+    // id 'net.thebugmc.gradle.sonatype-central-portal-publisher' version '1.2.3'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+        vendor = JvmVendorSpec.ADOPTIUM
+    }
+    
+    withJavadocJar()
+    withSourcesJar()
 }
 
 // Helper functions and constants
@@ -62,7 +75,8 @@ apply plugin: 'java'
 apply plugin: 'maven-publish'
 apply from: 'cobertura.gradle'
 //apply from: 'deploy.gradle'
-apply plugin: "se.bjurr.gitchangelog.git-changelog-gradle-plugin"
+apply plugin: 'se.bjurr.gitchangelog.git-changelog-gradle-plugin'
+// apply plugin: "net.thebugmc.gradle.sonatype-central-portal-publisher"
 
 sourceCompatibility = 1.11
 targetCompatibility = 1.11
@@ -157,3 +171,39 @@ task githubChangelogGenerator {
         println p.text
     }
 }
+
+tasks.register('stuffZip', Zip) {
+    archiveBaseName = 'stuff'
+    from 'src/stuff'
+}
+
+// signing {
+//     sign stuffZip
+// }
+
+
+// centralPortal {
+//     pom {
+//         name = 'cfmleditor-cflint'
+//         description = 'cflint'
+//         url = "https://github.com/cfmleditor/CFLint/"
+//         licenses {
+//             license {
+//                 name = "bsd-3-clause"
+//                 url = "https://opensource.org/license/bsd-3-clause"
+//             }
+//         }
+//         developers {
+//             developer {
+//                 name = "Gareth Edwards"
+//                 email = "ghedwards@gmail.com"
+//                 organization = "cfmleditor"
+//                 organizationUrl = "https://github.com/cfmleditor/"
+//             }
+//         }
+//         scm {
+//             url = "https://github.com/cfmleditor/CFLint/"
+//         }
+//     }
+//     publishingType = USER_MANAGED
+// }
