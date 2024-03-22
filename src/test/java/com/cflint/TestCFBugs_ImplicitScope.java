@@ -32,6 +32,8 @@ public class TestCFBugs_ImplicitScope {
                 + "<cfset URL.test5 = \"\">\r\n" 
                 + "<cfset var test5 = \"\">\r\n" 
                 + "<cfif test5></cfif>\r\n" 
+                + "<cfset test5 = {test6 = \"test7\"} />"
+                + "<cfset test9[test8] = \"test8\" />"
                 // + "<cfset VARIABLES.test5 = \"\">\r\n" 
                 // + "<cfif URL.test6></cfif>\r\n" 
                 // + "<cfif test6></cfif>\r\n" 
@@ -40,11 +42,13 @@ public class TestCFBugs_ImplicitScope {
                 + "</cfcomponent>";
         CFLintResult lintresult = cfBugs.scan(cfcSrc, "test.cfc");
         final List<BugInfo> result = lintresult.getIssues().values().iterator().next();
-        assertEquals(2, result.size());
+        assertEquals(3, result.size());
         assertEquals("IMPLICIT_SCOPE", result.get(0).getMessageCode());
         assertEquals("IMPLICIT_SCOPE", result.get(1).getMessageCode());
+        assertEquals("IMPLICIT_SCOPE", result.get(2).getMessageCode());
         assertEquals(4, result.get(0).getLine());
         assertEquals(5, result.get(1).getLine());
+        assertEquals(10, result.get(2).getLine());
     }
 
     @Test

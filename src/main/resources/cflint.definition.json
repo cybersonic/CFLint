@@ -679,7 +679,7 @@
                 {
                     "code": "AVOID_USING_ARRAYNEW",
                     "severity": "INFO",
-                    "messageText": "Use implict array construction instead (= [])."
+                    "messageText": "Use implicit array construction instead (= [])."
                 }
             ],
             "parameter": []

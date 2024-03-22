@@ -63,12 +63,16 @@ public class ImplicitScopeChecker extends CFLintScannerAdapter {
 
 	private void checkFullExpression(final CFFullVarExpression expression, final Context context, final BugList bugs) {
         final CFExpression variable = expression.getExpressions().get(0);
+        final CFExpression variable2 = expression.getExpressions().size() > 1 ? expression.getExpressions().get(1) : null;
         if (variable instanceof CFIdentifier) {
             final CFIdentifier cfIdentifier1 = (CFIdentifier) variable;
-			final CFIdentifier cfIdentifier2 = expression.getExpressions().size() > 1
-					&& expression.getExpressions().get(1) instanceof CFIdentifier
-							? (CFIdentifier) expression.getExpressions().get(1)
-							: null;
+			final CFIdentifier cfIdentifier2 = variable2 != null && variable2 instanceof CFIdentifier
+							? (CFIdentifier) variable2
+							    : ( variable2 instanceof CFMember 
+                                    ? (((CFMember) variable2).getExpression() instanceof CFIdentifier 
+                                        ? (CFIdentifier) ((CFMember) variable2).getExpression() 
+                                        : null ) 
+                                    : null );
             
             final String name1 = ((CFIdentifier) cfIdentifier1).getName();
             if ( isImplicitScope(name1) && cfIdentifier2 != null ) {

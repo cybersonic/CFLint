@@ -221,7 +221,7 @@ List of built-in rules and rule groups
         * Avoid using the evaluate function in production code.
 * ArrayNewChecker
     * AVOID_USING_ARRAYNEW - Avoid use of arraynew statements. Use [] instead.  *INFO*
-        * Use implict array construction instead (= []).
+        * Use implicit array construction instead (= []).
 * ComplexBooleanExpressionChecker
     * COMPLEX_BOOLEAN_CHECK - Complex boolean expression.  *WARNING*
         * Boolean expression is too complex. Consider simplifying or moving to a named method.
