@@ -48,14 +48,24 @@ public class ImplicitScopeChecker extends CFLintScannerAdapter {
             checkExpression((CFVarDeclExpression)expression, context);
         } else if (expression instanceof CFIdentifier) {
             final String name = ((CFIdentifier) expression).getName();
-            if ( name != null && !isScope(name) && ( !context.isInFunction() || !context.getCallStack().checkVariable(name) ) ) {
-                if (context.isInAssignmentExpression()) {
-                    unscopedAssignedVariables.put(name.toLowerCase(), new VariableInfo(name, expression, context));
-                    if ( context.isInAssignmentExpression() ) {
-                        variableScopedVariables.add(name.toLowerCase());
+            if ( name != null ) {
+                final boolean checkIsScope = isScope(name);
+                final boolean checkIsInFunction = context.isInFunction();
+                final boolean checkIsCallStackVariable = checkIsInFunction == true ? context.getCallStack().checkVariable(name) : false;
+
+                if ( !checkIsScope && ( !checkIsInFunction || !checkIsCallStackVariable ) ) {
+                    if (context.isInAssignmentExpression() && !(expression.getParent() instanceof CFMember) ) {
+                        if ( !context.isInStructKeyExpression() ) {
+                            unscopedAssignedVariables.put(name.toLowerCase(), new VariableInfo(name, expression, context));
+                            if ( context.isInAssignmentExpression() ) {
+                                variableScopedVariables.add(name.toLowerCase());
+                            }
+                        }
+                    } else {
+                        if ( !context.isInStructKeyExpression() ) {
+                            implicitIdentifierVariables.put(name.toLowerCase(), new VariableInfo(name, expression, context));
+                        }
                     }
-                } else {
-                    implicitIdentifierVariables.put(name.toLowerCase(), new VariableInfo(name, expression, context));
                 }
             }
         }
@@ -68,11 +78,11 @@ public class ImplicitScopeChecker extends CFLintScannerAdapter {
             final CFIdentifier cfIdentifier1 = (CFIdentifier) variable;
 			final CFIdentifier cfIdentifier2 = variable2 != null && variable2 instanceof CFIdentifier
 							? (CFIdentifier) variable2
-							    : ( variable2 instanceof CFMember 
+							    /* : ( variable2 instanceof CFMember 
                                     ? (((CFMember) variable2).getExpression() instanceof CFIdentifier 
                                         ? (CFIdentifier) ((CFMember) variable2).getExpression() 
-                                        : null ) 
-                                    : null );
+                                        : null ) */
+                                    : null;
             
             final String name1 = ((CFIdentifier) cfIdentifier1).getName();
             if ( isImplicitScope(name1) && cfIdentifier2 != null ) {
