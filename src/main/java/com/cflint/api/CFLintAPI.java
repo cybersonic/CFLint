@@ -66,7 +66,7 @@ public class CFLintAPI {
 
     public CFLintResult scan(final List<String> fileOrFolder) throws CFLintScanException, CFLintConfigurationException {
 
-        if ( this.threaded ) {
+        /* if ( this.threaded ) {
 
             List<Callable<Integer>> callableTasks = new ArrayList<>();
             int numThreads = Runtime.getRuntime().availableProcessors();
@@ -91,7 +91,7 @@ public class CFLintAPI {
                 cflint.getStats().getCounts().add(bug.getMessageCode(), bug.getSeverity());
             }
         
-        } else {
+        } else { */
 
             for (final String scanfolder : fileOrFolder) {
                 cflint.scan(scanfolder);
@@ -100,7 +100,8 @@ public class CFLintAPI {
             for (final BugInfo bug : cflint.getBugs()) {
                 cflint.getStats().getCounts().add(bug.getMessageCode(), bug.getSeverity());
             }
-        }
+            
+        // }
             
         return new CFLintResult(cflint);
     }
@@ -109,8 +110,7 @@ public class CFLintAPI {
         return scan(source, "source.cfc");
     }
 
-    public CFLintResult scan(final String source, final String filename)
-            throws CFLintScanException {
+    public CFLintResult scan(final String source, final String filename) throws CFLintScanException {
         final File starterFile = new File(filename);
         if (starterFile.exists() && starterFile.getParentFile().exists()) {
             cflint.setupConfigAncestry(starterFile.getParentFile());
