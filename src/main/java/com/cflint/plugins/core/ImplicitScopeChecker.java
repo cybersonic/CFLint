@@ -57,9 +57,9 @@ public class ImplicitScopeChecker extends CFLintScannerAdapter {
                     if (context.isInAssignmentExpression() && !(expression.getParent() instanceof CFMember) ) {
                         if ( !context.isInStructKeyExpression() ) {
                             unscopedAssignedVariables.put(name.toLowerCase(), new VariableInfo(name, expression, context));
-                            if ( context.isInAssignmentExpression() ) {
+                            //if ( context.isInAssignmentExpression() ) {
                                 variableScopedVariables.add(name.toLowerCase());
-                            }
+                            //}
                         }
                     } else {
                         if ( !context.isInStructKeyExpression() ) {
@@ -101,10 +101,14 @@ public class ImplicitScopeChecker extends CFLintScannerAdapter {
                     scopedVariables.add(name.toLowerCase());
                 }
             } else if ( expression.getExpressions().size() == 1 ) {
-                if ( name1 != null && ( !context.isInFunction() || !context.getCallStack().checkVariable(name1) ) ) {
-                    unscopedAssignedVariables.put(name1.toLowerCase(), new VariableInfo(name1,cfIdentifier1,context));
-                    if ( context.isInAssignmentExpression() ) {
-                        variableScopedVariables.add(name1.toLowerCase());
+                if ( name1 != null ) {
+                    final boolean checkIsInFunction = context.isInFunction();
+                    final boolean checkIsCallStackVariable = checkIsInFunction == true ? context.getCallStack().checkVariable(name1) : false;
+                    if ( !checkIsInFunction || !checkIsCallStackVariable ) {
+                        unscopedAssignedVariables.put(name1.toLowerCase(), new VariableInfo(name1,cfIdentifier1,context));
+                        if ( context.isInAssignmentExpression() ) {
+                            variableScopedVariables.add(name1.toLowerCase());
+                        }
                     }
                 }
             }

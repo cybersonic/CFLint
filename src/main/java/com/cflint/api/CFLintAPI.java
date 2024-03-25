@@ -6,6 +6,10 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.IOUtils;
 
@@ -37,6 +41,7 @@ public class CFLintAPI {
     boolean logError = false;
     boolean quiet = false;
     boolean debug = false;
+    boolean threaded = false;
 
     /**
      * List of file extensions to scan.  Default to *.cfc and *.cfm
@@ -59,15 +64,44 @@ public class CFLintAPI {
         this(new ConfigBuilder().build());
     }
 
-
     public CFLintResult scan(final List<String> fileOrFolder) throws CFLintScanException, CFLintConfigurationException {
 
-        for (final String scanfolder : fileOrFolder) {
-            cflint.scan(scanfolder);
+        if ( this.threaded ) {
+
+            List<Callable<Integer>> callableTasks = new ArrayList<>();
+            int numThreads = Runtime.getRuntime().availableProcessors();
+            ExecutorService executorService = Executors.newFixedThreadPool(numThreads);
+            
+            for (final String scanfolder : fileOrFolder) {
+                Callable<Integer> callableTask = () -> {
+                    cflint.scan(scanfolder);
+                    return 1;
+                };
+                callableTasks.add(callableTask);
+            }
+
+            try {
+                executorService.invokeAll(callableTasks);
+                executorService.shutdown();
+                executorService.awaitTermination(2, TimeUnit.MINUTES);
+            } catch (InterruptedException e) {
+            }
+
+            for (final BugInfo bug : cflint.getBugs()) {
+                cflint.getStats().getCounts().add(bug.getMessageCode(), bug.getSeverity());
+            }
+        
+        } else {
+
+            for (final String scanfolder : fileOrFolder) {
+                cflint.scan(scanfolder);
+            }
+            
+            for (final BugInfo bug : cflint.getBugs()) {
+                cflint.getStats().getCounts().add(bug.getMessageCode(), bug.getSeverity());
+            }
         }
-        for (final BugInfo bug : cflint.getBugs()) {
-            cflint.getStats().getCounts().add(bug.getMessageCode(), bug.getSeverity());
-        }
+            
         return new CFLintResult(cflint);
     }
 
@@ -174,6 +208,18 @@ public class CFLintAPI {
         this.verbose = verbose;
         if(cflint != null) {
             cflint.setVerbose(verbose);
+        }
+    }
+
+    /**
+     * Threaded Scan
+     *
+     * @param threaded   threaded scan
+     */
+    public void setThreaded(final boolean threaded) {
+        this.threaded = threaded;
+        if(cflint != null) {
+            cflint.setThreaded(threaded);
         }
     }
 

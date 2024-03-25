@@ -118,6 +118,7 @@ public class CFLint implements IErrorReporter {
     private boolean logError = false;
     private boolean quiet = false;
     private boolean debug = false;
+    private boolean threaded = false;
     private boolean showProgress = false;
     private boolean progressUsesThread = true;
     private CFLintStats stats = new CFLintStats();
@@ -210,9 +211,9 @@ public class CFLint implements IErrorReporter {
         fileLoop: while (folder != null && folder.exists()) {
             for (final File file : folder.listFiles()) {
                 if (file.getName().toLowerCase().equals(".cflintrc" + getEnvSuffix())) {
-                    if (verbose) {
-                        System.out.println("read config " + file);
-                    }
+                    // if (verbose) {
+                    //     System.out.println("read config " + file);
+                    // }
                     try {
                         @SuppressWarnings("deprecation")
                         final CFLintConfig newConfig = file.getName().toLowerCase().endsWith(".xml")
@@ -1502,6 +1503,10 @@ public class CFLint implements IErrorReporter {
 
     public void setVerbose(final boolean verbose) {
         this.verbose = verbose;
+    }
+
+    public void setThreaded(final boolean threaded) {
+        this.threaded = threaded;
     }
 
     public void setLogError(final boolean logError) {
