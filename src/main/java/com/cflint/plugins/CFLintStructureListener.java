@@ -13,9 +13,9 @@ public interface CFLintStructureListener {
     /**
      * Called when processing of a new file has started
      * 
-     * @param fileName
+     * @param fileName fileName
      *            Name of the file that started
-     * @param bugs
+     * @param bugs bugs
      *            List of errors reported
      */
     void startFile(final String fileName, BugList bugs);
@@ -23,9 +23,9 @@ public interface CFLintStructureListener {
     /**
      * Called when processing of current file has ended
      * 
-     * @param fileName
+     * @param fileName fileName
      *            Name of the file that finished
-     * @param bugs
+     * @param bugs bugs
      *            List of errors reported
      */
     void endFile(final String fileName, BugList bugs);
@@ -33,11 +33,11 @@ public interface CFLintStructureListener {
     /**
      * Called when processing of current file has almost ended
      * 
-     * @param fileName
+     * @param fileName fileName
      *            Name of the file that finished
-     * @param context
+     * @param context context
      *            Current context
-     * @param bugs
+     * @param bugs bugs
      *            List of errors reported
      */
     void beforeEndFile(final String fileName, Context context, BugList bugs);
@@ -45,9 +45,9 @@ public interface CFLintStructureListener {
     /**
      * Called when processing a new component has started
      * 
-     * @param context
+     * @param context context
      *            Current context
-     * @param bugs
+     * @param bugs bugs
      *            List of errors reported
      */
     void startComponent(final Context context, BugList bugs);
@@ -55,9 +55,9 @@ public interface CFLintStructureListener {
     /**
      * Called when processing of current component has ended
      * 
-     * @param context
+     * @param context context
      *            Current context
-     * @param bugs
+     * @param bugs bugs
      *            List of errors reported
      */
     void endComponent(final Context context, BugList bugs);
@@ -65,9 +65,9 @@ public interface CFLintStructureListener {
     /**
      * Called when processing of a new function has started
      * 
-     * @param context
+     * @param context context
      *            Current context
-     * @param bugs
+     * @param bugs bugs
      *            List of errors reported
      */
     void startFunction(final Context context, BugList bugs);
@@ -75,9 +75,9 @@ public interface CFLintStructureListener {
     /**
      * Called when processing of current function has ended
      * 
-     * @param context
+     * @param context context
      *            Current context
-     * @param bugs
+     * @param bugs bugs
      *            List of errors reported
      */
     void endFunction(final Context context, BugList bugs);

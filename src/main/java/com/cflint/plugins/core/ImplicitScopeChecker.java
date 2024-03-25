@@ -40,7 +40,13 @@ public class ImplicitScopeChecker extends CFLintScannerAdapter {
     private final Collection<String> implicitscopes = Arrays.asList(CF.FORM, CF.URL, CF.CGI, CF.COOKIE, CF.CLIENT, CF.FILE, CF.CFCATCH);
     private final Collection<String> variablescopes = Arrays.asList(CF.VARIABLES);
 
-	@Override
+	
+    /** 
+     * @param expression expression
+     * @param context context
+     * @param bugs bugs
+     */
+    @Override
 	public void expression(final CFExpression expression, final Context context, final BugList bugs) {
         if(expression instanceof CFFullVarExpression) {
             checkFullExpression((CFFullVarExpression) expression, context, bugs);

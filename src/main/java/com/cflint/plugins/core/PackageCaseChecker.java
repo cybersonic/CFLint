@@ -25,6 +25,12 @@ public class PackageCaseChecker extends CFLintScannerAdapter implements CFLintSe
     private final Map<String, List<PackageCaseCheckerEntry>> expressionCheckRegister = new HashMap<>();
     private CFLint cflintRef;
 
+    
+    /** 
+     * @param expression expression
+     * @param context context
+     * @param bugs bugs
+     */
     @Override
     public void expression(final CFExpression expression, final Context context, final BugList bugs) {
         if (expression instanceof CFFunctionExpression) {

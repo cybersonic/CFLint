@@ -10,6 +10,13 @@ public class TextOutput {
 
     private static final String NEW_LINE = System.getProperty("line.separator");
 
+    
+    /** 
+     * @param bugList bugList
+     * @param sb sb
+     * @param stats stats
+     * @throws IOException IOException
+     */
     public void output(final BugList bugList, final Writer sb, CFLintStats stats) throws IOException {
         final BugCounts counts = stats.getCounts();
 

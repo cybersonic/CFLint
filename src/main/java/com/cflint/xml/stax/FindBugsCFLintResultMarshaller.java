@@ -20,6 +20,13 @@ import com.cflint.xml.MarshallerException;
 
 public class FindBugsCFLintResultMarshaller implements CFLintResultMarshaller {
 
+    
+    /** 
+     * @param bugList bugList
+     * @param writer writer
+     * @param stats stats
+     * @throws MarshallerException MarshallerException
+     */
     @Override
     public void output(final BugList bugList, final Writer writer, final CFLintStats stats) throws MarshallerException {
         try {

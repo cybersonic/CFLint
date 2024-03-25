@@ -20,6 +20,10 @@ public class TestCLintConfigXml {
 
     private CFLint cflint;
 
+    
+    /** 
+     * @throws Exception Exception
+     */
     @Before
     public void setUp() throws Exception {
         final com.cflint.config.CFLintConfiguration conf = createDefaultLimited("CFInsertChecker",

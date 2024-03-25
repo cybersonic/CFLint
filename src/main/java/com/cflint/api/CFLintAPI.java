@@ -64,6 +64,13 @@ public class CFLintAPI {
         this(new ConfigBuilder().build());
     }
 
+    
+    /** 
+     * @param fileOrFolder fileOrFolder
+     * @return CFLintResult
+     * @throws CFLintScanException CFLintScanException
+     * @throws CFLintConfigurationException CFLintConfigurationException
+     */
     public CFLintResult scan(final List<String> fileOrFolder) throws CFLintScanException, CFLintConfigurationException {
 
         /* if ( this.threaded ) {
