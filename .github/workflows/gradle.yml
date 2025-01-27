@@ -1,10 +1,11 @@
 name: Gradle
 on:
+  push:
+    branches: 
+      - master
   pull_request:
     branches:
-      - main
       - master
-      - dev
 jobs:
   gradle:
     strategy:
