@@ -414,6 +414,16 @@ Checking boolean expression explicitly.
 
 **Message**: Explicit check of boolean expression is not needed.
 
+### PointlessChecker
+
+#### POINTLESS_CHECK
+
+This statement appears to be pointless.
+
+**Severity**: INFO
+
+**Message**: This statement appears to be pointless.
+
 ### VariableNameChecker
 
 #### VAR_INVALID_NAME
