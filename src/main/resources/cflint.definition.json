@@ -709,6 +709,18 @@
             "parameter": []
         },
         {
+            "name": "PointlessChecker",
+            "className": "PointlessChecker",
+            "message": [
+                {
+                    "code": "POINTLESS_CHECK",
+                    "severity": "INFO",
+                    "messageText": "This statement appears to be pointless."
+                }
+            ],
+            "parameter": []
+        },
+        {
             "name": "VariableNameChecker",
             "className": "VariableNameChecker",
             "message": [
