@@ -13,6 +13,16 @@ buildscript {
         maven { 
             url = "https://cfmlprojects.org/artifacts" 
         }
+        maven {
+            url = "https://maven.pkg.github.com/cfmleditor/cfparser"
+            mavenContent {
+                snapshotsOnly()
+            }
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
     }
     dependencies {
         classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
@@ -92,6 +102,16 @@ repositories {
     }
     maven { 
         url = "https://cfmlprojects.org/artifacts" 
+    }
+    maven {
+        url = "https://maven.pkg.github.com/cfmleditor/cfparser"
+        mavenContent {
+            snapshotsOnly()
+        }
+        credentials {
+            username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
+            password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+        }
     }
 }
 dependencies {
