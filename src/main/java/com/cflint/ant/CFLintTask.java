@@ -48,6 +48,7 @@ public class CFLintTask extends Task {
     private boolean quiet;
     private final List<FileSet> filesets = new ArrayList<>();
 
+    @SuppressWarnings("deprecation")
     @Override
     public void execute() {
         FileInputStream fis = null;
@@ -75,7 +76,7 @@ public class CFLintTask extends Task {
                     }
                 }
             }
-            // TODO combine configs
+            
             final CFLint cflint = new CFLint(config);
             cflint.setVerbose(verbose);
             cflint.setQuiet(quiet);

@@ -19,7 +19,9 @@ public class TestCFLintConfig2 {
      */
     @Test
     public void test() throws Exception {
+        @SuppressWarnings("deprecation")
         CFLintConfiguration config = com.cflint.config.ConfigUtils.unmarshal(sconfig0, CFLintConfig.class);
+        @SuppressWarnings("deprecation")
         CFLintConfiguration config1 = com.cflint.config.ConfigUtils.unmarshal(sconfig1, CFLintConfig.class);
 
         assertTrue(config.includes(new PluginMessage("ARG_VAR_CONFLICT")));

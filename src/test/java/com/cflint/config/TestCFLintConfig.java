@@ -39,6 +39,7 @@ public class TestCFLintConfig {
         message.setMessageText("messageText");
         message.setSeverity(Levels.WARNING);
 
+        @SuppressWarnings("deprecation")
         Marshaller jaxbMarshaller = ConfigUtils.createMarshaller();
 
         // output pretty printed

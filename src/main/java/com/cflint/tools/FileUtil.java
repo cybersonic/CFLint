@@ -26,7 +26,7 @@ public class FileUtil {
         try {
             fis = new FileInputStream(file);
             try {
-                final BOMInputStream bOMInputStream = new BOMInputStream(fis);
+                BOMInputStream bOMInputStream = BOMInputStream.builder().setInputStream(fis).get();
                 final ByteOrderMark bom = bOMInputStream.getBOM();
                 final String charsetName = bom == null ? DEFAULT_ENCODING : bom.getCharsetName();
                 InputStreamReader reader = new InputStreamReader(new BufferedInputStream(bOMInputStream), charsetName);

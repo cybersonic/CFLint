@@ -118,6 +118,7 @@ public class CFLint implements IErrorReporter {
     private boolean logError = false;
     private boolean quiet = false;
     private boolean debug = false;
+    @SuppressWarnings("unused")
     private boolean threaded = false;
     private boolean showProgress = false;
     private boolean progressUsesThread = true;
@@ -160,7 +161,7 @@ public class CFLint implements IErrorReporter {
         exceptionListeners.clear();
         processed.clear();
         for (final PluginInfoRule ruleInfo : configuration.getRules()) {
-            addScanner(ConfigUtils.loadPlugin(ruleInfo));// TODO load them all
+            addScanner(ConfigUtils.loadPlugin(ruleInfo));
         }
         allowedExtensions.addAll(AllowedExtensionsLoader.init(RESOURCE_BUNDLE_NAME));
         bugs.clearBugList();
@@ -1122,6 +1123,7 @@ public class CFLint implements IErrorReporter {
      * @param oldcontext oldcontext
      *            The previous context
      */
+    @SuppressWarnings("unchecked")
     private void process(final CFExpression expression, final Element elem, final Context oldcontext) {
         if (expression != null) {
             final Context context = oldcontext.subContext(elem);
@@ -1375,7 +1377,15 @@ public class CFLint implements IErrorReporter {
         final BugInfoBuilder bldr = new BugInfo.BugInfoBuilder().setMessageCode(msgcode).setVariable(nameVar)
                 .setFunction(context.getFunctionName()).setFilename(context.getFilename())
                 .setComponent(context.getComponentName());
-        bldr.setSeverity(msgInfo.getSeverity());
+
+        final PluginMessage includeMsgInfo = configuration.getInclude(msgInfo);
+
+        if ( includeMsgInfo != null && includeMsgInfo.getSeverity() != null && includeMsgInfo.getSeverity().toString() != "" ) {
+            bldr.setSeverity(includeMsgInfo.getSeverity());
+        } else {
+            bldr.setSeverity(msgInfo.getSeverity());
+        }
+        
         bldr.setMessage(msgInfo.getMessageText());
 
         if (expression instanceof CFStatement) {

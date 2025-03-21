@@ -74,8 +74,7 @@ public class SimpleComplexityChecker extends CFLintScannerAdapter {
         } else {
             if (name.equalsIgnoreCase(CF.CFIF) || name.equalsIgnoreCase(CF.CFELSE) || name.equalsIgnoreCase(CF.CFELSEIF)
                 || name.equalsIgnoreCase(CF.CFLOOP) || name.equalsIgnoreCase(CF.CFWHILE)
-                || name.equalsIgnoreCase(CF.CFOUTPUT) // TODO could check for
-                // query=
+                || name.equalsIgnoreCase(CF.CFOUTPUT) 
                 || name.equalsIgnoreCase(CF.CFCASE) || name.equalsIgnoreCase(CF.CFDEFAULTCASE)
                 || name.equalsIgnoreCase(CF.CFTRY) || name.equalsIgnoreCase(CF.CFCATCH)) {
                 complexity++;

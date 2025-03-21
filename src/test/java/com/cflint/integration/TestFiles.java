@@ -156,6 +156,7 @@ public class TestFiles {
 
         final InputStream inputStream = new FileInputStream(folder.getPath() + "/.cflintrc.xml");
         try {
+            @SuppressWarnings("deprecation")
             final CFLintConfig retval = ConfigUtils.unmarshal(inputStream, CFLintConfig.class);
             return config.createNestedConfig(retval);
         } catch (final JAXBException e) {

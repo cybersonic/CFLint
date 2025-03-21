@@ -10,8 +10,6 @@ import com.cflint.plugins.Context;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import cfml.parsing.cfscript.CFExpression;
-import cfml.parsing.cfscript.CFFunctionExpression;
 import cfml.parsing.cfscript.script.CFFuncDeclStatement;
 import cfml.parsing.cfscript.script.CFScriptStatement;
 import net.htmlparser.jericho.Element;
@@ -37,7 +35,6 @@ public class FunctionCollisionChecker extends CFLintScannerAdapter {
 				functions.add(listObj.get(i).asText());
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

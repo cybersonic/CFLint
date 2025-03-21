@@ -83,6 +83,11 @@ public class CFLintChainedConfig extends BaseConfig{
     }
 
     @Override
+    public PluginMessage getInclude(final PluginMessage pluginMessage) {
+        return config.getInclude(pluginMessage);
+    }
+
+    @Override
     public void addExclude(final PluginMessage pluginMessage) {
         config.addExclude(pluginMessage);
     }

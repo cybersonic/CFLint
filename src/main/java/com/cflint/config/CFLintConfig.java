@@ -77,6 +77,14 @@ public class CFLintConfig extends BaseConfig {
         return includes;
     }
 
+    public PluginMessage getInclude(final PluginMessage include) {
+        final int idx = this.includes.indexOf(include);
+        if ( idx >= 0 ) {
+            return this.includes.get(idx);
+        }
+        return null;
+    }
+
     @XmlElement(name = "includes")
     public void setIncludes(final List<PluginMessage> includes) {
         this.includes = includes;

@@ -18,6 +18,8 @@ public interface CFLintConfiguration {
 
     void addInclude(PluginMessage pluginMessage);
 
+    PluginMessage getInclude(PluginMessage pluginMessage);
+
     void addExclude(PluginMessage pluginMessage);
 
     Collection<CFLintPluginInfo.PluginInfoRule> getRules();
