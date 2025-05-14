@@ -35,6 +35,7 @@ EXCESSIVE_FUNCTION_LENGTH:Method is too long.
 EXCESSIVE_COMPONENT_LENGTH:Component is too long.
 FUNCTION_TYPE_MISSING:Function is missing a return type.
 FUNCTION_TYPE_ANY:Function has a return type of any.
+FUNCTION_ACCESS_REMOTE:Function has a access type of remote.
 EXCESSIVE_ARGUMENTS:Function has too many arguments.
 EXCESSIVE_FUNCTIONS:Too many functions.
 FUNCTION_TOO_COMPLEX:Function is too complex.

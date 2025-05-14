@@ -510,6 +510,11 @@
                     "code": "FUNCTION_TYPE_ANY",
                     "severity": "INFO",
                     "messageText": "Function ${variable} return type is any. Please change to be a more specific type."
+                },
+                {
+                    "code": "FUNCTION_ACCESS_REMOTE",
+                    "severity": "INFO",
+                    "messageText": "Function ${variable} access type is remote. Please change to be public, private or package."
                 }
             ],
             "parameter": []

@@ -296,6 +296,14 @@ Function has a return type of any.
 
 **Message**: Function *variable* return type is any. Please change to be a more specific type.
 
+#### FUNCTION_ACCESS_REMOTE
+
+Function has a access type of remote.
+
+**Severity**: INFO
+
+**Message**: Function *variable* access type is remote. Please change to be public, private or package.
+
 ### TooManyArgumentsChecker
 
 #### EXCESSIVE_ARGUMENTS
@@ -382,7 +390,7 @@ Avoid use of isDebugMode statements.
 
 **Severity**: WARNING
 
-**Message**: Avoid using the name *variable* for a function.  It is reserved in some CFML implementations.  See https://cfdocs.org/*variable*
+**Message**: Avoid using the name *variable* for a function.  It is reserved in some CFML implementations.  See <https://cfdocs.org/*variable>*
 
 ### ArrayNewChecker
 
@@ -955,6 +963,8 @@ Warn with package case does not match its use.
 * [FUNCTION_HINT_MISSING](#function_hint_missing)
 
 * [FUNCTION_TYPE_ANY](#function_type_any)
+
+* [FUNCTION_ACCESS_REMOTE](#function_access_remote)
 
 * [FUNCTION_TYPE_MISSING](#function_type_missing)
 
