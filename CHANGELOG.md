@@ -1,5 +1,10 @@
 ﻿# CHANGE LOG
 
+## [CFLint-1.5.8](https://github.com/cfmleditor/CFLint/tree/CFLint-1.5.8) (2025-06-09)
+
+- RULES_TABLE.md for improved rule readability
+- Add `localmode` checks / support to varscoper
+
 ## [CFLint-1.5.7](https://github.com/cfmleditor/CFLint/tree/CFLint-1.5.7) (2025-05-15)
 
 - Create "FUNCTION_ACCESS_REMOTE" Rule for finding use of access="remote" in UDF's
