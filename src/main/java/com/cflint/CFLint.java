@@ -1166,6 +1166,7 @@ public class CFLint implements IErrorReporter {
                 // Only process function call expressions
             } else if (expression instanceof CFAssignmentExpression && !(expression instanceof CFTernaryExpression)) {
                 final Context assignmentContext = context.subContext(elem);
+                assignmentContext.setFunctionInfo(context.getFunctionInfo());
                 assignmentContext.setInAssignmentExpression(true);
                 process(((CFAssignmentExpression) expression).getLeft(), elem, assignmentContext);
                 // Right hand side is handled below. Left hand side gets a
